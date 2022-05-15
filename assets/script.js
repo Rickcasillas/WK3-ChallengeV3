@@ -11,8 +11,8 @@ function randomint(min, max) {
     return Math.floor(min*(1 - rand) + rand*max)
 }
 
-function getrandomitem(list) {
-    return list(randomint(0, options.length - 1))
+function getRandomItem(list) {
+    return list[randomInt(list.length)]
 }
 
 function generatePassword() {
@@ -28,10 +28,10 @@ function generatePassword() {
         window.alert("Invalid")
     }
 
-    var UserWantsNumbers = window.confirm("Include numbers?")
-    var UserWantsSymbols = window.confirm("Include symbols?")
-    var UserWantsLowercase = window.confirm("Include lowercase?")
-    var UserWantsUppercase = window.confirm("Include uppercase?")
+    var userWantsNumbers = window.confirm("Include numbers?")
+    var userWantsSymbols = window.confirm("Include symbols?")
+    var userWantsLowercase = window.confirm("Include lowercase?")
+    var userWantsUppercase = window.confirm("Include uppercase?")
 
     var numbersList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     var symbolsList = ["!", "@", "#", "$", "%", "^", "&", "*"]
@@ -40,28 +40,28 @@ function generatePassword() {
 
     var options = []
 
-    if (UserWantsNumbers === true) {
+    if (userWantsNumbers === true) {
         options.push(numbersList)
     }
 
-    if (UserWantsSymbols === true) {
+    if (userWantsSymbols === true) {
         options.push(symbolsList)
     }
 
-    if (UserWantsLowercase === true) {
+    if (userWantsLowercase === true) {
         options.push(lowercaseList)
     }
 
-    if (UserWantsUppercase === true) {
+    if (userWantsUppercase === true) {
         options.push(uppercaseList)
     }
 
-    var generatePassword = ""
+    var generatedPassword = ""
 
     for (var i = 0; 1 < passwordLength; i++) {
-        var randomlist = getrandomitem(options)
-        var randomchar = getrandomitem(randomlist)
-        generatedPassword += randomchar
+        var randomList = getRandomItem(options)
+        var randomChar = getRandomItem(randomList)
+        generatedPassword += randomChar
     }
 
     return generatedPassword
